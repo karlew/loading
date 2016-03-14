@@ -1,0 +1,60 @@
+﻿<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>首屏显性加载</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+  <div id="loadingbg">
+    <div id="loadingwrap">
+      <div id="loading">loading</div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $("#loading").animate({width:"40px"},function(){
+    	$(this).text("20%")
+    })
+  </script>
+  <div id="content">
+	  <div id="wrap1">
+	    <img class="bg-img" src="img/bg1.jpg">
+	  </div>
+	  <script type="text/javascript">
+		$("#loading").animate({width:"80px"},function(){
+	    	$(this).text("40%")
+	    })
+	  </script>
+	  <div id="wrap2">
+	    <img class="bg-img" src="img/bg2.jpg">
+	  </div>
+  <div>
+  <script type="text/javascript">
+    $("#loading").animate({width:"140px"},function(){
+    	$(this).text("70%")
+    })
+  </script>
+</body>
+</html>
+<script type="text/javascript">
+  $("#loading").animate({width:"200px"},function(){
+  	$(this).text("100%")
+  	$("#loadingbg").animate({opacity:"0"},function(){
+    	$(this).hide()
+    })
+  })
+  $(document).ready(function(){
+    $("#wrap1").click(function(){
+    	$(this).animate({width:"0"},200,function(){
+    		$(this).hide()
+    		$("#wrap2").show().animate({width:"100%"},200)
+    	})
+    })
+    $("#wrap2").click(function(){
+		$(this).animate({width:"0"},200,function(){
+    		$(this).hide()
+    		$("#wrap1").show().animate({width:"100%"},200)
+    	})
+    })	
+  })
+</script>
