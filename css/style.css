@@ -1,7 +1,6 @@
 body {
   margin:0;
   padding:0;
-  overflow: hidden;
 }
 
 #loadingbg {
@@ -28,27 +27,12 @@ body {
   box-shadow : 0px 0px 5px #222 inset;
 }
 
-#content{
-  height : 100%;
+.wrap{
   width : 100%;
-  position : fixed;
-}
-
-#wrap1{
-  height : 100%;
-  width : 100%;
-  max-width: 75vh;
-  margin: 0 auto;
-}
-
-#wrap2{
-  height : 100%;
-  width : 0;
-  max-width: 75vh;
   margin: 0 auto;
 }
 
 .bg-img{
   width: 100%;
-  height: 100vh;
+  max-width:75vh; 
 }

@@ -11,41 +11,43 @@
       <div id="loading">0%</div>
     </div>
   </div>
-  <div id="content">
-	  <div id="wrap1">
-	    <img class="bg-img" src="img/bg1.jpg">
-	  </div>
-	  <div id="wrap2">
-	    <img class="bg-img" src="img/bg2.jpg">
-	  </div>
-  <div>
+	<div class="wrap">
+		<img class="bg-img" src="img/1.jpg">
+		<img class="bg-img" src="img/2.jpg">
+		<img class="bg-img" src="img/3.jpg">
+		<img class="bg-img" src="img/4.jpg">
+		<img class="bg-img" src="img/5.jpg">
+		<img class="bg-img" src="img/6.jpg">
+		<img class="bg-img" src="img/7.jpg">
+	</div>
 </body>
 </html>
 <script type="text/javascript">
-	var loadNum = 0
-	$('.bg-img').load(function(){
-		loadNum+=50
-		$("#loading").stop().animate({width:loadNum*2+"px"},function(){
-			$(this).text(loadNum+"%")
-			if(loadNum==100){
+	var loadNum = 0;
+	var imgNum = $('.bg-img').length;
+	var txtGrad = parseInt(100 / imgNum);
+	var bgGrad = parseInt(200 / imgNum);
+	$('.bg-img').each(function(){
+		if($(this)[0].complete){
+			loadNum += 1;
+			$("#loading").text(loadNum*txtGrad+"%").width(loadNum*bgGrad+"px")
+			if(loadNum>=imgNum){
+				$("#loading").text("100%").width("200px");
 				$("#loadingbg").animate({opacity:"0"},function(){
 					$(this).hide()
 				})
 			}
-		})
+		}else{
+			$(this).load(function(){
+				loadNum += 1;
+				$("#loading").text(loadNum*txtGrad+"%").width(loadNum*bgGrad+"px")
+				if(loadNum>=imgNum){
+					$("#loading").text("100%").width("200px");
+					$("#loadingbg").animate({opacity:"0"},function(){
+						$(this).hide()
+					})
+				}
+			})
+		}
 	})
-  $(document).ready(function(){
-    $("#wrap1").click(function(){
-    	$(this).animate({width:"0"},200,function(){
-    		$(this).hide()
-    		$("#wrap2").show().animate({width:"100%"},200)
-    	})
-    })
-    $("#wrap2").click(function(){
-		$(this).animate({width:"0"},200,function(){
-    		$(this).hide()
-    		$("#wrap1").show().animate({width:"100%"},200)
-    	})
-    })	
-  })
 </script>
